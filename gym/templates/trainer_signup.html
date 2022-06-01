@@ -1,0 +1,70 @@
+{% load static %}
+
+{% if error == "no" %}
+     <script>
+	   alert('Invalid Credentials, Please Try Again');
+       window.location=("{% url 'user_login' %}");
+     </script>
+{% endif %}
+
+{% if error == "yes" %}
+     <script>
+	    alert('Signed up Successfully');
+       window.location=("{% url 'trainer_login' %}");
+     </script>
+{% endif %}
+
+<html lang="en" dir="ltr">
+   <head>
+      <meta charset="utf-8">
+      <title>Login Form</title>
+      <link rel="stylesheet" href="{% static 'css/mystyle.css' %}">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   </head>
+   <body>
+      <div class="wrapper">
+         <div class="title-text">
+            <div class="title login">
+               Trainer Signup
+            </div>
+            <div class="title signup">
+               Signup Form
+            </div>
+         </div>
+         <div class="form-container">
+            <div class="form-inner">
+               <form method="post" class="login">
+                  {% csrf_token %}
+                  <!-- <div class="field">
+                    <input type="text" name="memname" placeholder="Name" required>
+                 </div> -->
+                 <div class="field">
+                    <input type="email" name="email" placeholder="Email id" required>
+                 </div>
+                 
+                 <div class="field">
+                    <input type="text" name="contactno" placeholder="Contact no" required>
+                 </div>
+                  <div class="field">
+                     <input type="text" name="uname" placeholder="Username" required>
+                  </div>
+                  <div class="field">
+                     <input type="password" name="pwd" placeholder="Password" required>
+                  </div>
+
+                  <div class="field btn">
+                     <div class="btn-layer"></div>
+                     <input type="submit" value="Submit">
+                  </div>
+                  <div class="field">
+                     <center><a href="{% url 'index' %}">Back to Home</a></center>
+                  </div>
+                  <div class="field">
+                    <center><p>Already have an account?<a href="{% url 'trainer_login' %}">Login Here</a></p></center>
+                 </div>
+               </form>
+            </div>
+         </div>
+      </div>
+   </body>
+</html>
